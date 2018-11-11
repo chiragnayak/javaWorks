@@ -1,0 +1,21 @@
+CycliBarrier
+===========
+
+There are many situations in concurrent programming where threads may need to wait at a predefined execution
+point until all other threads reach that point. 
+
+CyclicBarrier helps provide such a synchronization point.
+
+CyclicBarrier(int numThreads) 
+
+Creates a CyclicBarrier object with the number of threads waiting
+on it specified. Throws IllegalArgumentException if numThreads is
+negative or zero.
+
+CyclicBarrier(int parties,Runnable barrierAction)
+
+Same as the previous constructor; this constructor additionally takes
+the thread to call when the barrier is reached.
+
+
+int await() -> Blocks until the specified number of threads have called await()

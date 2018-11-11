@@ -1,0 +1,36 @@
+
+Points to remember
+
+1. If a parent class has implemented Serializable interface then child class doesn’t need to implement it but vice-versa is not true.
+
+2. Only non-static data members are saved via Serialization process.
+
+3. Static data members and transient data members are not saved via Serialization process.So, if you don’t want to save value of a non-static data member then make it transient.
+
+4. Constructor of object is never called when an object is deserialized.
+
+5. Associated objects must be implementing Serializable interface.
+
+During deserialization (doble check below facts, as it contradicts with (4) above)
+======================
+
+The JDK code first creates a new instance of your class, in our example a new BusinessCard. 
+
+But it does not just use any constructor to create that new instance! It uses the no-argument constructor. 
+
+If that class does not have a no-argument constructor then the algorithm will climb the class hierarchy until it finds one. 
+
+At this point the fields of the newly created object are not set yet. This is where the readObject() method comes in.
+
+The JDK now uses the readObject() (if it exists) to restore the object state by assigning the values to the fields of the object
+
+Object Graph in Java Serialization
+=================================
+
+What is Object Graph?
+
+An Object Graph is the set of objects which will be serialized automatically, if the object which contains reference to them is serialized.
+
+In other words, we can say that when we serialize any object and if it contains any other object reference then JVM serializes the object and as well as its object references.
+
+In object graph every object should be serializable. If at-least one object is not serializable then we will get runtime execution saying NonSerializableExecution.

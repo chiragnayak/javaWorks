@@ -1,0 +1,85 @@
+
+
+Queue operations :
+ 
+To return head of queue, and "not-remove" element from queue
+	peek() -> returns head, returns null if queue is empty
+	element() -> returns head, throws Throws:NoSuchElementException if queue is empty (hence, never returns null)
+
+To return head of queue and "remove" element from queue
+	poll() -> returns head, returns null if queue is empty
+	remove() -> returns head, exception if empty
+	
+To remove element "o" from queue
+	remove(o) -> remove element "e" from queue if o.equals(e) is true. 
+	
+To add element in queue:
+	add(e) -> returns true if success, exception if fail
+	offer(e) -> returns true if success, false if fail
+	
+
+	
+		Throws exception	Returns special value
+Insert	add(e)				offer(e)
+Remove	remove()			poll()
+Examine	element()			peek()
+
+common implementations
+=======================
+
+Most frequently used Queue implementations are 
+	-> LinkedList, 
+	-> ArrayBlockingQueue
+	-> PriorityQueue.
+	
+BlockingQueues do not accept null elements. If we perform any null related operation, it throws NullPointerException.
+
+==========================
+queue categories
+==========================
+
+In Java, we can find many Queue implementations and have following two types
+
+Bounded Queues
+Unbounded Queues
+Blocking Queues
+Non-Blocking Queues
+
+Bounded Queues
+=============
+
+These are queues which are bounded by capacity that means we need to provide the max size of the queue at the time of creation. 
+	
+	For example ArrayBlockingQueue
+	
+	All Queues which are available in java.util.concurrent package are Bounded Queues.
+
+Unbounded Queues 
+===============
+These are queues which are NOT bounded by capacity that means we should not provide the size of the queue.
+	
+    For example LinkedList (see previous example).
+
+	All Queues which are available in java.util package are Unbounded Queues 
+
+
+
+In other ways, We can broadly categorize them into the following two types:
+
+Blocking Queues
+================
+
+All Queues which implement BlockingQueue interface are BlockingQueues and rest are Non-Blocking Queues.
+
+BlockingQueues blocks until it finishes it’s job or time out, but Non-BlockingQueues do not.
+
+A blocking queue is a queue that blocks when : 
+	(1) if you try to dequeue from it and the queue is empty
+	(2) OR if you try to enqueue items to it and the queue is already full.
+
+A thread trying to dequeue from an empty queue is blocked until some other thread inserts an item into the queue. 
+A thread trying to enqueue an item in a full queue is blocked until some other thread makes space in the queue, either by dequeuing one or more items or clearing the queue completely.
+
+Non-Blocking Queues
+====================
+

@@ -1,0 +1,38 @@
+dependency inversion principle
+=================================
+
+software dependency == coupling
+
+intent : High level modules should depend upon high level generalizations and not on low level details
+
+High Level Classes --> Abstraction Layer (interfaces) --> Low Level Classes
+
+Client (high level) --- dependency (interface) (ISubSystem) ------> SubSystem1 (low level)
+																(in future can be SubSystem 2)
+																            |
+																            +-----> dependency (interface) (ISubSubSystem)  ---> SubSubSystem 1
+																            
+* interfaces and abstract classes are considered as high level resource
+* a concrete class is considered as low level resource
+
+Since in above, client class, is dependent on high level resources (interfaces), rather than low level (concrete classes) we can easily change what resources (or concrete implementation) client would be using.
+
+hence name dependency inversion !!
+
+Foot notes
+===========
+
+ the dependency inversion principle is a means to :
+ 
+ 	(1)  change the referencing of concrete classes from being direct to indirect 
+ 	
+ 	(2)  generalize the behaviors of your concrete classes into abstract classes and interfaces 
+ 	
+ 	(3) have client classes interact with your system through a generalization rather than directly with concrete resources, 
+
+	(4) put emphasis on high level dependency over low level concrete dependency.
+	
+	
+
+
+																                                               

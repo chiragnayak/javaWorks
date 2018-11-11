@@ -1,0 +1,15 @@
+
+Composing Object Principle
+===========================
+
+This principle states that classes should achieve code reuse through aggregation rather than inheritance. 
+
+Design patterns, such as the composite design pattern and decorator design pattern use this design principle.
+
+Composing objects principle will :
+
+	(1) provide a means of code reuse without the tight coupling of inheritance. 
+	
+	(2) Allow objects to dynamically add behaviors at run time 
+	
+	(3) provide your system with more flexibility.

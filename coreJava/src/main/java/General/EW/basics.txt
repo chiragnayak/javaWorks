@@ -1,0 +1,115 @@
+OO basics
+==========
+
+order
+=======
+
+package statement.
+import statements
+class/ interface definitions
+
+imports
+=========
+
+-> Syntax for importing static fields is:  
+
+import static <package>.<classname>.*; 
+
+or 
+
+import static <package>.<classname>.<fieldname>;
+
+ex : import static java.lang.Integer.* 
+	 import static java.lang.Integer.MAX_VALUE;
+	 
+take example : package hierarchy as ... /com/enthu
+-> By importing com.enthu.* all the classes from the package will be imported and can be referred to using simple names. 
+-> Importing com.* will not import the subpackage enthu. It will only import the classes in package com.
+
+name of file
+=============
+
+-> There can be only one (and only one) public class in a file and its name must be equal to fileName
+
+-> It is not necessary for a java file to have a public class. The requirement is that if a class (or enum) is public 
+then that class (or enum) must be defined in a file by the same name and that there can be only one public class (or enum) 
+in a file.
+
+definition of "the" main method
+=================================
+
+-> final is a valid modifier for the standard main method. 
+
+		 public final static void main(String[] args){.. } //valid
+		
+-> A valid declaration of "the" main() method must be public and static, should return void, and should take a single array of Strings as a parameter.  
+-> The order of the static and public keywords is irrelevant. But the return type should always come just before the method name.  
+-> Applying final to the method does not change the method signature.
+
+(interface) = type vs (class) = state
+=======================================
+
+Java allows a class to implement multiple interfaces. An interface is a "type" and does not contain any state. This implies that Java supports multiple type inheritance.
+
+A class contains state and extending a class means inheriting the state. Since Java does not allow a class to extend from multiple classes, it means that Java does not support multiple state inheritance.
+
+instance initializer, static initializer
+==========================================
+class xyz {
+	
+	{
+	
+		//i am instance initializer
+		
+		//-> Instance Initialization Blocks run every time a new instance is created.
+		//-> Initialization Blocks run in the order they appear in the program
+		//-> The Instance Initialization Block is invoked after the parent class constructor is invoked 
+		//		(i.e. after super() constructor call)
+		
+	}
+	
+	static {
+	
+		// i am static initializer
+		//code inside static block is executed only once: the first time you make an object of that class 
+		//or
+		// the first time you access a static member of that class (even if you never make an object of that class)
+	}
+
+}
+
+A final variable must be initialized when an instance is constructed, or else the code will not compile. 
+This can be done either in an instance initializer or in EVERY constructor.
+The keyword static is used to signify that a block is static initializer. 
+If nothing is there before starting curly brace then it is an instance initializer.
+
+Equals method (wrapper classes)
+================================
+
+Equals method of a primitive wrapper class ( e.g. java.lang.Integer, Double, Float etc) are 
+1. symmetric => a.equals(b) returns same as b.equals(a) 
+2. transitive => if a.equals(b) and b.equals(c) return true, then a.equals(c) returns true. 
+3. reflexive => a.equals(a) return true.  
+
+hence -> a.equals(b) returns same as a == b. // is incorrect
+bcuase -> The wrapper classes's equals() method overrides Object's equals() method to compare the actual value instead of the reference.
+
+For example, the following code for the equals method on Integer explains how it works: 
+
+public boolean equals(Object obj) { 
+   if (obj instanceof Integer) { 
+       return value == ((Integer)obj).intValue();   
+	}   
+	
+ return false; 
+	
+}
+
+String, StringBuilder, and StringBuffer - all are final classes.  
+================================================================
+
+1. Remember that wrapper classes for primitives (java.lang.Boolean, java.lang.Integer, java.lang.Long, java.lang.Short etc.) are also final and so they cannot be extended.  
+
+2. java.lang.Number, however, is not final. Integer, Long, Double etc. extend Number.  
+
+3. java.lang.System is final as well.

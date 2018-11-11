@@ -1,0 +1,15 @@
+
+allows to modify an object dynamically
+
+The intent of this pattern is to add additional responsibilities dynamically to an object.
+
+we use it when we want :
+	-> capabilities of inheritance with subclasses
+	-> but we need to add functionalities at runtime
+	
+we add functionality using simple classes
+
+-> "rather rewrite the old code, you can extend to new code"
+
+intent -> Extending an objects functionality can be done statically (at compile time) by using inheritance 
+however it might be necessary to extend an objects	functionality dynamically (at runtime) as an object is used.

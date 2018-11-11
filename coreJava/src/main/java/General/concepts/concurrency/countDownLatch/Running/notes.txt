@@ -1,0 +1,12 @@
+CountDownLatch
+===============
+
+When you create a CountDownLatch, you initialize it with an integer, which represents a count value. 
+
+Threads would wait (by calling the await() method) for this count to reach zero. 
+
+Once zero is reached, all threads are released; any other calls to await() would return immediately since the count is already zero.
+
+The counter value can be decremented by one by calling the countDown() method. 
+
+You can get the current value of the counter using the getCount() method.

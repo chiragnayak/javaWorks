@@ -1,0 +1,32 @@
+MVC stands for Model View Controller. 
+
+Model -> data and methods to work on that data. It does not know anything about the view.
+View -> interface
+Controller -> coordinates interactions between view and model.
+
+=======================================
+
+MVC Design Pattern is used to separate the logic of different layers in a program in independent units. 
+
+This is known as the principle of Separation of Concern.
+
+With MVC design pattern, we have following components on which our design depends:
+
+-> The model which is transferred from one layer to the other.
+-> The View which is responsible to show the data present in the application.
+-> The controller is responsible to accept a request from a user, modify a model and send it to the view which is shown to the user.
+
+The idea behind MVC pattern is a very clear separation between domain objects which represents real-world entities and the presentation layer we see on the screen.
+
+Domain objects should be completely independent and should work without a View layer as well.
+
+
+=====================================
+Advantages of MVC Design pattern
+=====================================
+
+-> MVC allows rapid application development. If we simply define the Model layer in advance and pass this information to UI development team, they can start making the Views in parallel as Back-end developers design the application Controllers and logic behind them resulting in faster development.
+
+-> While changing a View mechanism, Controller layer doesn’t even have to know where the data goes. It only knows a logical view name and not even the HTML extension. So, it is very easy to switch to an Angular based view without affecting the Controller.
+
+-> MVC pattern emphasis on the low coupling between different components of an application. So, the View layer have no dependency on service layer and only Controller depends on it, even that with the interfaces and not from concrete implementation.

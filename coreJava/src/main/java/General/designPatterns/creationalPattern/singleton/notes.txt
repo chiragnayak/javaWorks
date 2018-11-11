@@ -1,0 +1,29 @@
+
+singletons are used for centralized management of internal or external resources and they provide a global point of access to themselves.
+
+points to take care
+====================
+
+Multithreading - A special care should be taken when singleton has to be used in a multithreading application. (double locking)
+
+Serialization - When Singletons are implementing Serializable interface they have to implement readResolve method in order to avoid having 2 different objects.
+
+Classloaders - If the Singleton class is loaded by 2 different class loaders we'll have 2 different classes, one for each class loader.
+
+Global Access Point represented by the class name - The singleton instance is obtained using the class name. At the first view this is an easy way to access it, but it is not very flexible. If we need to replace the Sigleton class, all the references in the code should be changed accordinglly.
+
+Reflections : One powerful way to break this pattern is to use reflection to access the private constructor and instantiate the class as many times as you want.
+
+
+Solutions:
+==========
+
+To save singleton property of class from getting brokern (i.e. to ensure that there is never two instances if it created)
+
+while de-serializtion : Override readResolve() method and return already created instance.
+
+while reflection : 
+
+while clone : Override clone() methond and you can :
+	-> return already created object 
+	-> throw CloneNotSupportedException 

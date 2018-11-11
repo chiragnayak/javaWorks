@@ -1,0 +1,5 @@
+
+Intent
+ 
+Defines an interface for creating objects, but let subclasses to decide which class to instantiate
+Refers to the newly created object through a common interface

@@ -1,0 +1,40 @@
+
+Pattern used when you want build up an object made up from other objects
+ 
+The more complex an application is, the complexity of classes and objects also increases.
+ 
+Complex objects are made of parts produced by other objects that need special care when being built. 
+
+An application might need a "mechanism" for building "complex objects" that is independent from the "ones that make up the object."
+
+mechanism/director -> RobotEngineer
+complex Object -> Robot
+ones that make up the object (only builder knows the specifics of main object) -> RobotBuilder
+
+OR
+
+Builder -> deals with the specifics of each object that is required to cretae the main object. It builds these different parts.
+Director -> the one who just assembles these complex objects that are required to create the main object and creates the main object.  
+main Object -> Complex object htat comprises of other objects in it. 
+
+-------------------
+
+This pattern allows a client object to construct a complex object by specifying only its type and content, 
+(by composing builder - common - interface inside engineer) 
+being shielded from the details related to the object's representation. 
+
+This way the construction process can be used to create different representations. 
+
+The logic (concrete builder methods) of this process is isolated form the actual steps ( - makeRobot() - ) used in creating the complex object, 
+so the process can be used again to create a different object form the same set of simple objects as the first one.
+
+
+=========== video notes ======= 
+
+Pattern is used when you : 
+	-> want to create objects made from bunch of other objects
+	-> want creation of these parts (other objects) to be independent of creation of main object
+	-> Hide creation of there parts from the client so both aren't dependent
+	-> the builder knows he speficics and no-body else does. 
+
+

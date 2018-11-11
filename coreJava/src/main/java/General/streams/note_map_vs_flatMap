@@ -1,0 +1,17 @@
+
+
+map(), 
+
+	-> performs functional operation (it is intermediate operations)
+	-> it applies a function on each element of stream and stores the value returned by the function into a new Stream. 
+	-> This way one stream is transformed into another. 
+
+the function used for transformation in map() returns a single value.
+
+But, if map() uses a function, which, instead of returning a single value returns a Stream of values than you have a Stream of Stream of values, 
+
+	-> then a flatmap() is used to flat that into a (single) Stream of values.
+	-> it is combination of a map and a flat operation
+
+
+	

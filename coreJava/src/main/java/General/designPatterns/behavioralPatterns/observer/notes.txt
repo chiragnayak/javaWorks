@@ -1,0 +1,42 @@
+
+When it is used ?
+
+When you need many other objects to recieve as update when another object changes.
+
+Definition : it is a software design pattern in which an object called the "subject", 
+maintains a list of its dependents, called "observers", and notifies the automatically of any state changes, 
+usually by calling one of their methods. 
+
+
+The Subject  (publisher) : sends as many updates to the registered/listed observers
+
+The Observers (subscribers) take the ones they want and use them.
+
+
+
+There is loose coupling between subject (publisher) and subscribers, as subject doesn't need to now anything abut the observers.
+
+Negative : the subject may send update that might not matter to observer.
+
+
+
+ISubject  (interface) 
+
++ register(IObserver)
++ unRegister(IObserver);
++ notifyObservers()
+
+Subject (class) implements ISubject 
+
+IObserver (interface)
++ update()
+
+
+ObserverClass_1 implements IObserver() 
++ update()
+
+ObserverClass_2 implements IObserver() 
++ update()
+
+
+
