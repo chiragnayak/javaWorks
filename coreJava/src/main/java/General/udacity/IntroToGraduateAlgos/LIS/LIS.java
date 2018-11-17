@@ -45,7 +45,6 @@ public class LIS {
 		
 		int L [] = new int [length];
 		
-		// TODO Auto-generated method stub
 		for(int i = 0; i < sequence.length; i++) {
 			
 			L[i] = 1;

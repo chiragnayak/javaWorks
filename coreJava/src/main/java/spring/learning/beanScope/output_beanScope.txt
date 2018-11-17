@@ -1,0 +1,26 @@
++++++++++++
+Bean Scope
++++++++++++
+--> Reading XML and creating Beans (IOC) and performing Constructor DI
+May 31, 2018 5:50:51 AM org.springframework.context.support.AbstractApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@bebdb06: startup date [Thu May 31 05:50:51 IST 2018]; root of context hierarchy
+May 31, 2018 5:50:51 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+INFO: Loading XML bean definitions from class path resource [applicationContext.xml]
+TrainingOfCoach: inside no-def constructor
+TrainingOfCoach : START Training of Coach !! 
+TrackCoach: Inside parameterised (trainingOfCoach) TrackCoach constructor
+CricketCoach: Inside CricketCoach no-def constructor
+CricketCoach: Inside setTrainingOfCoach of Cricket coach
+CricketCoach: Inside setEmailAddress() of Cricket coach
+CricketCoach: Inside setTeamName() of Cricket coach
+--> Getting Bean : myCoachBean
+--> Getting Bean : myCoachBean
+--> Object references are --> SAME
+--> Getting Bean : prototypeCoachBean
+BaseballCoach: Inside BaseballCoach no-def constructor
+--> Getting Bean : prototypeCoachBean
+BaseballCoach: Inside BaseballCoach no-def constructor
+--> Object references are --> DIFFERENT 
+May 31, 2018 5:50:51 AM org.springframework.context.support.AbstractApplicationContext doClose
+INFO: Closing org.springframework.context.support.ClassPathXmlApplicationContext@bebdb06: startup date [Thu May 31 05:50:51 IST 2018]; root of context hierarchy
+TrainingOfCoach : END Training of Coach !! 

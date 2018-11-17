@@ -1,0 +1,27 @@
++++++++++++++++++++++
+Inversion of Control
++++++++++++++++++++++
+--> Reading XML and creating Beans (IOC) and performing Constructor DI
+May 31, 2018 5:50:19 AM org.springframework.context.support.AbstractApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@bebdb06: startup date [Thu May 31 05:50:19 IST 2018]; root of context hierarchy
+May 31, 2018 5:50:19 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+INFO: Loading XML bean definitions from class path resource [applicationContext.xml]
+TrainingOfCoach: inside no-def constructor
+TrainingOfCoach : START Training of Coach !! 
+TrackCoach: Inside parameterised (trainingOfCoach) TrackCoach constructor
+CricketCoach: Inside CricketCoach no-def constructor
+CricketCoach: Inside setTrainingOfCoach of Cricket coach
+CricketCoach: Inside setEmailAddress() of Cricket coach
+CricketCoach: Inside setTeamName() of Cricket coach
+--> Getting Bean : myCoachBean
+--> Using Bean : myCoach
+TrainingOfCoach: The Coach Is Now Trained
+TrackCoach: Spend 15 LAPS on Track
+--> Using Bean : cricketCoachBean
+--> Using Bean : value from configFile
+GaryKresten@gmail.com
+--> Using Bean : value from properties file
+falcon Speed
+May 31, 2018 5:50:19 AM org.springframework.context.support.AbstractApplicationContext doClose
+INFO: Closing org.springframework.context.support.ClassPathXmlApplicationContext@bebdb06: startup date [Thu May 31 05:50:19 IST 2018]; root of context hierarchy
+TrainingOfCoach : END Training of Coach !! 

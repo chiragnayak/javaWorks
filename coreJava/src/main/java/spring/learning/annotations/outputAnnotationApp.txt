@@ -1,0 +1,11 @@
+--> Reading XML and creating Beans
+May 31, 2018 5:44:02 AM org.springframework.context.support.AbstractApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@bebdb06: startup date [Thu May 31 05:44:02 IST 2018]; root of context hierarchy
+May 31, 2018 5:44:02 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+INFO: Loading XML bean definitions from class path resource [contextFileAnnotation.xml]
+TrainingOfCoach: inside no-def constructor
+PhysioCoach: bean constructor
+TrainingOfCoach: inside no-def constructor --> Why this is called again ? 
+TrackCoach: Inside parameterised (trainingOfCoach) TrackCoach constructor --> Why this is called ? 
+May 31, 2018 5:44:03 AM org.springframework.context.support.AbstractApplicationContext doClose
+INFO: Closing org.springframework.context.support.ClassPathXmlApplicationContext@bebdb06: startup date [Thu May 31 05:44:02 IST 2018]; root of context hierarchy
