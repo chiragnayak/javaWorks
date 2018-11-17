@@ -10,7 +10,7 @@ public class PrintNum implements Runnable {
 
 	//to control odd is printed first
 	//to control/ensure which thread actually prints next and must have the lock
-	static String whosNext = "odd";
+	static volatile String whosNext = "odd"; //only static (without vlatile) also works
 
 	public PrintNum(int num) {
 		this.num = num;
@@ -39,7 +39,7 @@ public class PrintNum implements Runnable {
 		synchronized (lock) {
 
 			if (whosNext.equalsIgnoreCase("even")) {
-
+				//meaning lock is acquired but not my trn as even os to be printed 
 				lock.notifyAll();
 
 			} else {
@@ -56,7 +56,7 @@ public class PrintNum implements Runnable {
 				 * will ensure that thread is coming out of wait state and is competing for lock
 				 * as usual.
 				 * 
-				 * Overall, in this design, we don't need wait (timed) as such, because we have below 
+				 * Overall, in this design, we don't need wait (timed) as such, because we have 
 				 * condition to give up the lock.
 				 * 
 				 * if (whosNext.equalsIgnoreCase("even")) {
@@ -84,7 +84,7 @@ public class PrintNum implements Runnable {
 		synchronized (lock) {
 
 			if (whosNext.equalsIgnoreCase("odd")) {
-
+				//meaning lock is acquired but not my trn as odd os to be printed 
 				lock.notifyAll();
 
 			} else {
