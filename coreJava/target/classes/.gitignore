@@ -1,3 +1,7 @@
 /General/
 /spring/
 /META-INF/
+/applicationContext.xml
+/coachFile.properties
+/contextFileAnnotation.xml
+/springNotes.txt
