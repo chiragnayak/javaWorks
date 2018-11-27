@@ -1,0 +1,499 @@
+====
+SQL 
+====
+
+create DB:
+==========
+
+To create a new SQL database.
+
+CREATE DATABASE databaseName;
+
+
+drop DB
+=======
+
+The DROP DATABASE statement is used to drop an existing SQL database.
+
+	DROP DATABASE databaseName;
+	
+create table
+============
+
+The CREATE TABLE statement is used to create a new table in a database.
+
+	
+	CREATE TABLE table_name (
+		column1 datatype,
+		column2 datatype,
+		column3 datatype,
+	   ....
+	);
+	
+	:: >> From another table
+	
+
+	-> A copy of an existing table can be created using a combination of the CREATE TABLE statement and the SELECT statement.
+	-> The new table gets the same column definitions. All columns or specific columns can be selected.
+	-> If you create a new table using an existing table, the new table will be filled with the existing values from the old table.
+	
+
+	CREATE TABLE new_table_name AS
+		SELECT column1, column2,...
+		FROM existing_table_name
+		WHERE ....;
+		
+INSERT VALUES
+=============
+
+
+SELECT ROWS
+===========
+
+The SELECT statement is used to select data from a database.
+
+The data returned is stored in a result table, called the result-set.
+
+
+	SELECT column1, column2, ...
+
+
+SELECT DISTINCT
+===============
+
+The SELECT DISTINCT statement is used to return only distinct (different) values.
+
+Inside a table, a column often contains many duplicate values; and sometimes you only want to list the different (distinct) values.
+
+The SELECT DISTINCT statement is used to return only distinct (different) values.
+
+
+	SELECT DISTINCT column1, column2, ...
+	FROM table_name;
+	
+WHERE
+======
+
+The WHERE clause is used to filter records.
+The WHERE clause is used to extract only those records that fulfill a specified condition.
+
+	SELECT column1, column2, ...
+	FROM table_name
+	WHERE condition;
+	
+Following operators can be used in the WHERE clause:
+
+Operator	Description
+
+=			Equal
+<>			Not equal. Note: In some versions of SQL this operator may be written as !=
+>			Greater than
+<			Less than
+>=			Greater than or equal
+<=			Less than or equal
+BETWEEN		Between an inclusive range
+LIKE		Search for a pattern
+IN			To specify multiple possible values for a column
+
+Ex :
+		 SELECT column_name(s)
+		 FROM table_name
+		 WHERE column_name BETWEEN value1 AND value2;
+		 
+			SELECT Fname, Lname
+			FROM Employee
+			WHERE Salary
+			BETWEEN 30000 AND 45000;
+			
+			SELECT Fname, Lname
+			FROM Emplyoee
+			WHERE Salary
+			NOT BETWEEN 30000 AND 45000;
+		 
+		 SELECT column_name(s)
+		 FROM table_name
+		 WHERE column_name IN (list_of_values);
+		 
+		    SELECT Fname, Lname
+			FROM Employee
+			WHERE Salary IN (30000, 40000, 25000);
+			
+			SELECT Fname, Lname
+			FROM Employee
+			WHERE Salary NOT IN (25000, 30000);
+			
+
+	
+The SQL AND, OR and NOT Operators
+===================================
+
+The WHERE clause can be combined with AND, OR, and NOT operators.
+
+The AND and OR operators are used to filter records based on more than one condition:
+
+The AND operator displays a record if all the conditions separated by AND is TRUE.
+The OR operator displays a record if any of the conditions separated by OR is TRUE.
+The NOT operator displays a record if the condition(s) is NOT TRUE.
+
+AND Syntax
+	SELECT column1, column2, ...
+	FROM table_name
+	WHERE condition1 AND condition2 AND condition3 ...;
+OR Syntax
+	SELECT column1, column2, ...
+	FROM table_name
+	WHERE condition1 OR condition2 OR condition3 ...;
+NOT Syntax
+	SELECT column1, column2, ...
+	FROM table_name
+	WHERE NOT condition;
+	
+Typical Ex:
+	
+	combi 
+	
+	-->  all fields from "Customers" where country is "Germany" AND city must be "Berlin" OR "München" 
+	
+	SELECT * FROM Customers
+	WHERE Country='Germany' AND (City='Berlin' OR City='München');
+	
+	--> all fields from "Customers" where country is NOT "Germany" and NOT "USA"
+	
+	SELECT * FROM Customers
+	WHERE NOT Country='Germany' AND NOT Country='USA';
+	
+	
+INSERT INTO Statement
+==========================
+
+The INSERT INTO statement is used to insert new records in a table.
+
+	INSERT INTO table_name (column1, column2, column3, ...)
+	VALUES (value1, value2, value3, ...);
+	
+If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query. 
+However, make sure the order of the values is in the same order as the columns in the table. 
+
+	INSERT INTO table_name
+	VALUES (value1, value2, value3, ...);
+	
+	
+NULL Value
+==============
+
+A field with a NULL value is a field with no value.
+
+If a field in a table is optional, it is possible to insert a new record or update a record without adding a value to this field. Then, the field will be saved with a NULL value.
+
+Note: It is very important to understand that a NULL value is different from a zero value or a field that contains spaces. A field with a NULL value is one that has been left blank during record creation!
+
+ -> How to Test for NULL Values? !!
+
+ V IMP : It is not possible to test for NULL values with comparison operators, such as =, <, or <>.
+ 		 We will have to use the IS NULL and IS NOT NULL operators instead.
+
+IS NULL Syntax
+	SELECT column_names
+	FROM table_name
+	WHERE column_name IS NULL;
+	
+IS NOT NULL Syntax
+	SELECT column_names
+	FROM table_name
+	WHERE column_name IS NOT NULL;
+	
+	
+	
+UPDATE statement 
+=============================
+
+It is used to modify the existing records in a table.
+
+
+	UPDATE table_name
+	SET column1 = value1, column2 = value2, ...
+	WHERE condition;
+
+	Note: Be careful when updating records in a table! Notice the WHERE clause in the UPDATE statement. 
+	
+	-> The WHERE clause specifies which record(s) that should be updated. If you omit the WHERE clause, all records in the table will be updated!
+	
+
+
+DELETE Statement
+================
+
+To delete existing records in a table.
+
+
+	DELETE FROM table_name
+	WHERE condition;
+	
+	
+It is possible to delete all rows in a table without deleting the table. This means that the table structure, attributes, and indexes will be intact:
+
+	--> deleting all records
+
+	DELETE FROM table_name;
+
+	or:
+
+	DELETE * FROM table_name;
+	
+	
+SQL Aliases
+=============
+
+SQL aliases are used to give a table, or a column in a table, a temporary name.
+
+Aliases are often used to make column names more readable.
+
+An alias only exists for the duration of the query.
+
+Alias Column Syntax
+	SELECT column_name AS alias_name
+	FROM table_name;
+	
+Alias Table Syntax
+	SELECT column_name(s)
+	FROM table_name AS alias_name;
+
+		SELECT o.OrderID, o.OrderDate, c.CustomerName
+		FROM Customers AS c, Orders AS o
+		WHERE c.CustomerName="Around the Horn" AND c.CustomerID=o.CustomerID;
+
+Alter Table:
+==============
+
+to add, delete, or modify columns in an existing table.
+
+To add and drop various constraints on an existing table.
+
+	ALTER TABLE Persons 
+	ADD UNIQUE (ID);
+	
+	ALTER TABLE Persons 
+	ADD CONSTRAINT UC_Person UNIQUE (ID,LastName);
+
+To add a column in a table, 
+
+	ALTER TABLE table_name 
+	ADD column_name datatype;
+
+To delete a column in a table,
+
+	ALTER TABLE table_name 
+	DROP COLUMN column_name;
+
+To change the data type of a column in a table, use the following syntax:
+
+	ALTER COLUMN column_name datatype;
+
+	:: >> My SQL / Oracle (prior version 10G):
+
+	ALTER TABLE table_name 
+	MODIFY COLUMN column_name datatype
+
+	:: >> 10G or later
+	
+	ALTER TABLE table_name 
+	MODIFY column_name datatype;
+	
+
+SQL Constraints
+================
+
+SQL constraints are used to specify rules for the data in a table.
+
+Constraints are used to limit the type of data that can go into a table. This ensures the accuracy and reliability of the data in the table. If there is any violation between the constraint and the data action, the action is aborted.
+
+Constraints can be column level or table level. 
+
+	Column level constraints apply to a column, 
+	table level constraints apply to the whole table.
+
+The following constraints are commonly used in SQL:
+
+NOT NULL - Ensures that a column cannot have a NULL value
+
+	CREATE TABLE Persons (
+		ID int NOT NULL,
+		LastName varchar(255) NOT NULL,
+		FirstName varchar(255) NOT NULL,
+		Age int
+	);
+
+UNIQUE - Ensures that all values in a column are different
+	
+		CREATE TABLE Persons (
+			ID int NOT NULL,
+			LastName varchar(255) NOT NULL,
+			FirstName varchar(255),
+			Age int,
+			UNIQUE (ID)
+		);
+
+		CREATE TABLE Persons (
+			ID int NOT NULL,
+			LastName varchar(255) NOT NULL,
+			FirstName varchar(255),
+			Age int,
+			CONSTRAINT UC_Person UNIQUE (ID,LastName)
+		);
+
+PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+		
+		-> The PRIMARY KEY constraint uniquely identifies each record in a database table.
+		-> Primary keys must contain UNIQUE values, and cannot contain NULL values.
+		-> A table can have only one primary key, which may consist of single or multiple fields.
+		
+		CREATE TABLE Persons (
+			ID int NOT NULL,
+			LastName varchar(255) NOT NULL,
+			FirstName varchar(255),
+			Age int,
+			PRIMARY KEY (ID)
+		);
+		
+		CREATE TABLE Persons (
+			ID int NOT NULL,
+			LastName varchar(255) NOT NULL,
+			FirstName varchar(255),
+			Age int,
+			CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
+		);
+		
+		ALTER TABLE Persons 
+		ADD PRIMARY KEY (ID);
+		
+		ALTER TABLE Persons 
+		ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName);
+		
+		ALTER TABLE Persons 
+		DROP PRIMARY KEY;
+		
+FOREIGN KEY - Uniquely identifies a row/record in another table
+		
+		A FOREIGN KEY is a key used to link two tables together.
+		A FOREIGN KEY is a field (or collection of fields) in one table that refers to the PRIMARY KEY in another table.
+		The table containing the foreign key is called the child table, and the table containing the candidate key is called the referenced or parent table.
+		
+		CREATE TABLE Orders (
+			OrderID int NOT NULL,
+			OrderNumber int NOT NULL,
+			PersonID int,
+			PRIMARY KEY (OrderID),
+			FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+		);
+		
+		CREATE TABLE Orders (
+			OrderID int NOT NULL,
+			OrderNumber int NOT NULL,
+			PersonID int,
+			PRIMARY KEY (OrderID),
+			CONSTRAINT FK_PersonOrder FOREIGN KEY (PersonID)
+			REFERENCES Persons(PersonID)
+		);
+		
+		ALTER TABLE Orders 
+		ADD FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+		
+		ALTER TABLE Orders
+		ADD CONSTRAINT FK_PersonOrder
+		FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+		
+		ALTER TABLE Orders
+		DROP FOREIGN KEY FK_PersonOrder;
+		
+CHECK - Ensures that all values in a column satisfies a specific condition
+
+	CREATE TABLE Persons (
+		ID int NOT NULL,
+		LastName varchar(255) NOT NULL,
+		FirstName varchar(255),
+		Age int,
+		CHECK (Age>=18)
+	);
+	
+	CREATE TABLE Persons (
+		ID int NOT NULL,
+		LastName varchar(255) NOT NULL,
+		FirstName varchar(255),
+		Age int,
+		City varchar(255),
+		CONSTRAINT CHK_Person CHECK (Age>=18 AND City='Sandnes')
+	);
+	
+	ALTER TABLE Persons
+	ADD CHECK (Age>=18);
+	
+	ALTER TABLE Persons
+	ADD CONSTRAINT CHK_PersonAge CHECK (Age>=18 AND City='Sandnes');
+	
+	ALTER TABLE Persons
+	DROP CHECK CHK_PersonAge;
+
+DEFAULT - Sets a default value for a column when no value is specified
+
+	-> The DEFAULT constraint is used to provide a default value for a column.
+	-> The default value will be added to all new records IF no other value is specified.
+
+	CREATE TABLE Persons (
+		ID int NOT NULL,
+		LastName varchar(255) NOT NULL,
+		FirstName varchar(255),
+		Age int,
+		City varchar(255) DEFAULT 'Sandnes'
+	);
+	
+	ALTER TABLE Persons
+	ALTER City SET DEFAULT 'Sandnes';
+	
+	ALTER TABLE Persons
+	ALTER City DROP DEFAULT;
+	
+INDEX - Used to create and retrieve data from the database very quickly
+
+	CREATE INDEX index_name
+	ON table_name (column1, column2, ...);
+
+Auto-Increment
+================
+
+Auto-increment allows a unique number to be generated automatically when a new record is inserted into a table.
+
+Often this is the primary key field that we would like to be created automatically every time a new record is inserted.
+
+	CREATE TABLE Persons (
+		ID int NOT NULL AUTO_INCREMENT,
+		LastName varchar(255) NOT NULL,
+		FirstName varchar(255),
+		Age int,
+		PRIMARY KEY (ID)
+	);
+
+SQL CREATE VIEW Statement
+===========================
+
+In SQL, a view is a virtual table based on the result-set of an SQL statement.
+
+-> A view contains rows and columns, just like a real table. 
+-> The fields in a view are fields from one or more real tables in the database.
+-> You can add SQL functions, WHERE, and JOIN statements to a view and present the data as if the data were coming from one single table.
+
+	CREATE VIEW view_name AS
+	SELECT column1, column2, ...
+	FROM table_name
+	WHERE condition;
+	
+	
+	CREATE VIEW new_view_local AS
+    SELECT 
+        firstName, designation
+    FROM
+        office
+    WHERE
+        city = 'mumbai';
+		
+	-> you can combine more that two tables in a view using JOINS.
+	

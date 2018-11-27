@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd"
+    
+    xmlns:context="http://www.springframework.org/schema/context">
+    
+    <!-- 
+    
+    this schema is required to read property file as added above:
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd" 
+    
+    xmlns:context="http://www.springframework.org/schema/context
+    
+    -->
+ 
+ 	<!-- Load properties file -->
+ 	<context:property-placeholder location="classpath:coachFile.properties"/>
+ 	
+ 	<!-- BEAN -->
+   <bean id="trainingOfCoachBean" class ="spring.learning.coach.TrainingOfCoach"
+   			init-method="startTrainingOfCoach"
+   			destroy-method="endTrainingOfCoach">
+   </bean>
+ 
+ 	<!-- BEAN -->
+ 	<!-- Inversion of control : bean definition -->
+    <bean id="myCoachBean" 	class ="spring.learning.coach.TrackCoach">
+     
+     <!-- constructor dependency injection, reference of the bean and then calling the 
+     constructor. Note the default constructor is not called in this case -->
+	 <constructor-arg ref = "trainingOfCoachBean"/>
+	  
+	</bean>
+	
+	<!-- BEAN -->
+	<bean id="cricketCoachBean" class = "spring.learning.coach.CricketCoach">
+	
+	<!-- setter injection (bean) , it will look for setter for field trainingOfCoach in bean 'cricket coach'
+	and will use 'trainingOfCoachBean' bean as parameter of that setter -->
+	<property name="trainigOfCoach" ref="trainingOfCoachBean" />	
+	
+	<!-- setter injection (literal), hardcoding in configFile -->
+	<property name="emailAddress" value="GaryKresten@gmail.com"/>
+	
+	<!-- setter injection (literal), reading from properties file -->
+	<property name="teamName" value="${coach.team}"/>
+	</bean>
+	
+	<!-- BEAN -->
+ 	<!-- Inversion of control : bean definition -->
+    <bean id="prototypeCoachBean" 	
+    	class ="spring.learning.coach.BaseballCoach"
+    	scope="prototype">
+      
+	</bean>
+  
+</beans>
