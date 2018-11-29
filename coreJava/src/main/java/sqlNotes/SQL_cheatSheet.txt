@@ -497,3 +497,22 @@ In SQL, a view is a virtual table based on the result-set of an SQL statement.
 		
 	-> you can combine more that two tables in a view using JOINS.
 	
+	
+SELECT a.name AS "EmployeeName", b.name AS "ManagerName"
+FROM Employee a, Employee b
+WHERE a.manager_id = b.id 
+
+UNION
+
+SELECT a.name, a.manager_id
+FROM Employee a
+WHERE a.manager_id IS NULL
+
+
+	
+SELECT b.id, b.name
+FROM Employee a, Employee b
+WHERE a.manager_id = b.id 
+GROUP BY a.manager_id 
+HAVING COUNT(*)>1;
+	
