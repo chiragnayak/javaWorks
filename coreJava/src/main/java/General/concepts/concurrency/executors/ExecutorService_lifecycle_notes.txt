@@ -1,3 +1,24 @@
+
+The lifecycle implied by ExecutorService has three states
+
+	-> running, 
+	-> shutting down
+	-> terminated.
+	
+	ExecutorServices are initially created in the running state.
+	
+	The shutdown method initiates a graceful shutdown: no new tasks are accepted but previously submitted tasks are allowed to complete—including those that
+	have not yet begun execution. 
+	
+	The shutdownNow method initiates an abrupt shutdown: it attempts to cancel outstanding tasks and does not start any tasks that are queued but not begun.
+	
+	The lifecycle of a task executed by an Executor has four phases: 
+	
+		-> created, 
+		-> submitted,
+		-> started, 
+		-> completed.
+
 ===========================
 ExecutorService methods:
 ============================

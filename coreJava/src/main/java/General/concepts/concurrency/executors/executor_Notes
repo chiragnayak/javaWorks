@@ -1,0 +1,27 @@
+
+An object that executes submitted Runnable tasks. 
+
+This interface provides a way of decoupling task submission from the mechanics of how each task will be run, including details of thread use, scheduling, etc. An Executor is normally used instead of explicitly creating threads. For example, rather than invoking new Thread(new(RunnableTask())).start() for each of a set of tasks, you might use: 
+ Executor executor = anExecutor;
+ executor.execute(new RunnableTask1());
+ executor.execute(new RunnableTask2());
+ ...
+ 
+ 
+It provides a standard means of decoupling task submission from task execution.
+
+Executor is based on the producer-consumer pattern, where activities that
+submit tasks are the producers (producing units of work to be done) and the
+threads that execute tasks are the consumers (consuming those units of work).
+Using an Executor is usually the easiest path to implementing a producer-consumer
+design in your application
+	
+In the java.util.concurrent package there are three interfaces:
+
+Executor — Used to submit a new task.
+
+ExecutorService — A subinterface of Executor that adds methods to manage lifecycle of threads used to run the submitted tasks and methods to produce a Future to get a result from an asynchronous computation.
+
+ScheduledExecutorService — A subinterface of ExecutorService, to execute commands periodically or after a given delay.
+
+ 

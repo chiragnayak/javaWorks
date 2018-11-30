@@ -26,7 +26,7 @@ public class ExecutorDemo {
 		 */
 		ExecutorService executorObj = Executors.newSingleThreadExecutor();
 
-		executorObj.execute(new Runnable() {
+		executorObj.execute(new Runnable() { //annonymus inner class
 
 			@Override
 			public void run() {

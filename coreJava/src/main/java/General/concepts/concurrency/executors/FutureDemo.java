@@ -7,25 +7,28 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class FutureDemo {
-	
+
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
-		
+
 		ExecutorService exService = Executors.newSingleThreadExecutor();
-		
-		
+
 		/*
 		 * Callable - interface
 		 * 
+		 * Returns Future object :
 		 * 
+		 * Future represents the lifecycle of a task and provides methods to
+		 * test whether the task has completed or been cancelled, retrieve its
+		 * result, and cancel the task.
 		 * 
-		 * */
-		Future <Integer> valueInFuture = exService.submit(new Callable<Integer>() {
-			
+		 */
+		Future<Integer> valueInFuture = exService.submit(new Callable<Integer>() {
+
 			@Override
 			public Integer call() throws Exception {
-				
+
 				int x = 0;
-				while (x++<10) {
+				while (x++ < 10) {
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
@@ -33,15 +36,14 @@ public class FutureDemo {
 						e.printStackTrace();
 					}
 				}
-				
+
 				return x;
-				
+
 			};
 		});
-		
+
 		/*
-		 * futureObj.isDone()
-		 * ====================
+		 * futureObj.isDone() ====================
 		 * 
 		 * Returns true if this task completed. Completion may be due to normal
 		 * termination, an exception, or cancellation -- in all of these cases,
@@ -49,17 +51,33 @@ public class FutureDemo {
 		 * 
 		 */
 		System.out.print("Waiting.");
-		while(!valueInFuture.isDone()){
-			
+		while (!valueInFuture.isDone()) {
+
 			System.out.print(".");
 			Thread.sleep(500);
 		}
-		
+
 		/*
 		 * Waits if necessary for the computation to complete, and then
 		 * retrieves its result.
 		 */
 		System.out.println(valueInFuture.get());
+
+		exService.shutdown();
+
+		/*
+		 * ways to create a Future to describe a task.
+		 * 
+		 * -> The submit methods in ExecutorService all return a Future, so that
+		 * you can submit a Runnable or a Callable to an executor and get back a
+		 * Future that can be used to retrieve the result or cancel the task.
+		 * 
+		 *  -> Explicitly instantiate a FutureTask for a given Runnable
+		 * or Callable. (Because FutureTask implements Runnable, it can be
+		 * submitted to an Executor for execution or executed directly by
+		 * calling its run method.)
+		 * 
+		 */
 	}
 
 }

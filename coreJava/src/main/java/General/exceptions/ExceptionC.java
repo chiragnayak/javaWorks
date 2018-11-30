@@ -1,4 +1,4 @@
-package General.customExceptions;
+package General.exceptions;
 
 public class ExceptionC extends ExceptionB{
 	
