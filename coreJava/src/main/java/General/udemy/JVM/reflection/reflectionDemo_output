@@ -1,0 +1,26 @@
+
+In demoClassObjectAccess ...
+
+strArray.getClass().getName(): [Ljava.lang.String;
+
+clazz.getName(): General.udemy.JVM.stringPool.User
+clazz.isInterface(): false
+clazz.getInterfaces(): 0
+clazz.getSuperclass().getName(): java.lang.Object
+
+ClassNotFoundException due to Class.forName("boolean").getName()
+
+int.class.getName(): int
+
+In demoCoreReflection ...
+object.getClass(): General.udemy.JVM.stringPool.User
+Method name: postBookmarkReview
+Method's return type is void!!! 
+Method name: saveWebLink
+Constructor: General.udemy.JVM.stringPool.User, # parameters: 0
+Constructor: General.udemy.JVM.stringPool.User, # parameters: 5
+
+Saving new WebLink ...
+WebLink URL: http://www.google.com
+Title: Google
+Result of invoking saveWebLink: true

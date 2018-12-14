@@ -15,6 +15,18 @@ public class BasicOperations {
 		int [] x = new int [] {1,2,3,4};
 		Arrays.stream(x).forEach(System.out::print);
 		
+		/*
+				Arrays.stream(array)
+				
+			applicable :- 
+				double []
+				int []
+				long []
+				T[]
+				
+			not applicable :-
+				char[]
+		*/
 		System.out.println("");
 		
 		//way : 2 -> IntStrean.of()

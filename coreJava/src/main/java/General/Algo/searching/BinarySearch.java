@@ -9,9 +9,14 @@ import java.util.stream.IntStream;
  * recursive implementation, O(Logn) recursion call stack space.
  * 
  * Binary Search: Search a sorted array by repeatedly dividing the search
- * interval in half. Begin with an interval covering the whole array. If the
- * value of the search key is less than the item in the middle of the interval,
- * narrow the interval to the lower half. Otherwise narrow it to the upper half.
+ * interval in half.
+ * 
+ * Begin with an interval covering the whole array.
+ * 
+ * If the value of the search key is less than the item in the middle of the
+ * interval, narrow the interval to the lower half. Otherwise narrow it to the
+ * upper half.
+ * 
  * Repeatedly check until the value is found or the interval is empty.
  * 
  * We basically ignore half of the elements just after one comparison.
@@ -52,9 +57,12 @@ public class BinarySearch {
 
 			mid = (low + high) / 2; // calculate the mid
 
-			if (array[mid] > target) { // target lies in first half, move the high to 1 less than mid
+			if (array[mid] > target) { // target lies in first half, move the
+										// high to 1 less than mid
 				high = mid - 1;
-			} else if (array[mid] < target) { // target lies in second half, move the low to 1 over than mid
+			} else if (array[mid] < target) { // target lies in second half,
+												// move the low to 1 over than
+												// mid
 				low = mid + 1;
 			} else {
 				break; // either found or not present.

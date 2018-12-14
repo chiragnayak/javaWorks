@@ -31,6 +31,13 @@ public class InsertionSort {
 	}
 
 	public static int[] insertionSort(int[] array) {
+		
+		int xx = 1;
+		int yy = 0;
+		
+		int xxx = xx/yy;
+		
+		float fff = Float.NaN;
 
 		// position by position : 0th to length
 		for (int outerPointer = 1; outerPointer < array.length; outerPointer++) {
