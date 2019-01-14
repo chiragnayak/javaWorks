@@ -23,6 +23,11 @@ import General.courseEra.AlgorithmsPrinston.week2.utilities.SortUtil;
  * - Running time is insensitive to input. Quadratic time even if the input is sorted. 
  * - Data movement is minimal. Linear number of exchanges.
  * 
+ * GeeksForGeeks:
+ * 
+ * Time Complexity: O(n2) as there are two nested loops.
+   Auxiliary Space: O(1). The good thing about selection sort is it never makes more than O(n) swaps and can be useful when memory write is a costly operation
+ * 
  * @author cnayak
  *
  */
@@ -37,7 +42,10 @@ public class SelectionSort {
 					minIndex = j;
 				}
 			}
+			
 			SortUtil.swap(array, i, minIndex);
+			
+			SortUtil.printArray(array);
 		}
 	}
 
