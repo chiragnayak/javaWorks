@@ -14,7 +14,7 @@ import General.courseEra.AlgorithmsPrinston.week2.utilities.SortUtil;
  * 	   inner loop : 
  * 			low : always starts with 0, 
  * 				upper limit of low (inner loop) : N - sub-array-size
- * 				steps of low = sub-array-size + sub-array-size {i.e. left side + right side of merge}
+ * 				steps of low = sub-array-size + sub-array-size {basically total array size after merge, i.e. left side + right side of merge}
  * 				ex : for N = 7;
  * 				outer loop : 1, 2, 4
  * 				(sub array size = 1, for iner loop, low up to < 6 ) : 0, 2, 4 
@@ -23,7 +23,7 @@ import General.courseEra.AlgorithmsPrinston.week2.utilities.SortUtil;
  * 			mid : low + size - 1
  * 			high : Min of (low + size + size - 1, N-1 )
  * 
- * 			Instead of directly calculating mid and high , we are calculating it in terms of low + what ever times size of sub-array for that outer iteration.
+ * 			Instead of directly calculating mid and high , we are calculating it in terms of "low", i.e. low + what ever times size of sub-array for that outer iteration.
  * 
  * @author cnayak
  *

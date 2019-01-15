@@ -3,6 +3,9 @@ package General.courseEra.AlgorithmsPrinston.week2.elementrarySorting;
 import General.courseEra.AlgorithmsPrinston.week2.utilities.SortUtil;
 
 /**
+ * 
+ * Stable algorithm
+ * 
  * In iteration [i], swap a[i] with each larger entry to its left.
  * 
  * @author cnayak

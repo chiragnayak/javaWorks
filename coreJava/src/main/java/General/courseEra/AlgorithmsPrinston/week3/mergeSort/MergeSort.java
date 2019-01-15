@@ -4,9 +4,13 @@ import General.courseEra.AlgorithmsPrinston.week2.utilities.SortUtil;
 
 /**
  * 
+ * Stable algorithm
+ * 
  * uses: 
  * 	at most : N lg N compares
  * 		  	  6 N lg N array access
+ * 
+ * Merge sort with duplicate keys : Always between 1/2 N lg N and N lg N compares
  * 
  * Improvements : 
  * 	
@@ -24,7 +28,7 @@ public class MergeSort {
 	public static void sort(Comparable [] array, Comparable [] auxArray, int low, int high){
 		
 		if(high <= low) return;
-		int mid = low + (high-low)/2;
+		int mid = low + (high-low)/2; // mid = (low+high)/2
 		sort(array, auxArray, low, mid);
 		sort(array, auxArray, mid+1, high);
 		merge(array, auxArray, low, mid, high);

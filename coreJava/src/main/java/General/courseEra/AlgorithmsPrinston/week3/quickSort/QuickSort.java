@@ -3,6 +3,27 @@ package General.courseEra.AlgorithmsPrinston.week3.quickSort;
 import General.courseEra.AlgorithmsPrinston.week2.utilities.SortUtil;
 
 /**
+ * 
+ * recursive method
+ * in-place sorting algorithm
+ * Partitioning > needs constant extra space
+ * depth of recursion > logrithmic extra space
+ * 
+ * best case : number of compares, devides exactly in half always, N log N
+ * worst case (array already sorted) : number of compares ~ 1/2 N^2 (hence, it is important to shuffle the array in the beginning)
+ * Average case : 
+ * 		propostion : the average number of compares Cn to wuikc sort an array of "n" disctinct keys is ~ 2n ln n
+ * 					 the number of exchanges is ~ i/2 n ln n
+ * 
+ * First partition, so that, for some j
+ * 
+ *  - entry a[j] is in place
+ *  - no larger entry on left of array (all smaller entries in left of a[j])
+ *  - no smaller entry in right of array (all larger entries in right of a[j])
+ * 
+ * Second, sort each side recursively. 
+ * 
+ * 
  * @author cnayak
  *
  */
@@ -30,8 +51,8 @@ public class QuickSort {
 	 * Repeat until i and j pointers cross.
 	 * 
 	 * 	Phase - 1
-	 * 		Scan i from left to right, so long as array[i] < array [pivot] [therefore -> everything at the left of i is less than pivot element]
-	 * 		Scan j from right to left so long as array[j] > array[pivot] [ therefore -> everything at the right of j is higher than pivot element]
+	 * 		Scan i from left to right, so long as array[i] < array [partition] [therefore -> everything at the left of i is less than partition element]
+	 * 		Scan j from right to left so long as array[j] > array[partition] [ therefore -> everything at the right of j is higher than partition element]
 	 * 
 	 * 		exchange array[i] and array[j];
 	 * 
@@ -39,13 +60,13 @@ public class QuickSort {
 	 * 
 	 *  Phase -2 
 	 *  
-	 *  	exchange array[pivot] with array [j]
+	 *  	exchange array[partition] with array [j]
 	 *  
-	 *  Post this elements at right of pivot will be greater that array[pivot] and left will be lesser than array[pivot]. 
+	 *  Post this elements at right of partition will be greater that array[partition] and left will be lesser than array[partition]. 
 	 *  
-	 *  i.e. array[pivot] element is in correct position.
+	 *  i.e. array[partition] element is in correct position.
 	 *  
-	 *   return pivot position. 
+	 *   return partition position. 
 	 * 
 	 * 
 	 * @param array
@@ -58,20 +79,20 @@ public class QuickSort {
 		int i = low+1;
 		int j = high;
 		
-		int pivot = low;
+		int partition = low;
 		
 		while(true){
 			
-			//everything at the left of i is less than pivot element
-			//find item on left to swap (basically higher that pivot element)
-			while(SortUtil.lessThan(array[i], array[pivot])){
+			//Rule : everything at the left of i is less than partition element
+			//find item on left to swap (basically higher that partition element)
+			while(SortUtil.lessThan(array[i], array[partition])){
 				i++;
 				if(i>=high) break;
 			}
 			
-			//everything at the right of j is higher than pivot element
-			//find item on the right to swap (basically smaller than pivot element)
-			while(SortUtil.lessThan(array[pivot], array[j])) {
+			//Rule : everything at the right of j is higher than partition element
+			//find item on the right to swap (basically smaller than partition element)
+			while(SortUtil.lessThan(array[partition], array[j])) {
 				j--;
 				if(j<=low) break;
 			}
@@ -82,6 +103,8 @@ public class QuickSort {
 			}
 			
 			//swap higher element with smaller element
+			//at j (on the right side) we found element which is smaller than partition element
+			//ar i (on the left side) we found element which is higher than partition element
 			SortUtil.swap(array, i, j);
 			
 			System.out.print("<>");
@@ -89,15 +112,15 @@ public class QuickSort {
 			
 		}
 		
-		//once the pointers cross, all the elements to right of jth is higher than pivot element
-		//and all the elements at left of jth are smaller than pivot element.
-		SortUtil.swap(array, pivot, j);
+		//once the pointers cross, all the elements to right of jth is higher than partition element
+		//and all the elements at left of jth are smaller than partition element.
+		SortUtil.swap(array, partition, j);
 		//question : why it is exchange with jth ?
 		
 		System.out.print("==");
 		SortUtil.printArray(array);
 		
-		//after swap, now pivot (which started from low) is jth element
+		//after swap, now partition (which started from low) is jth element
 		//return j
 		
 		return j;
