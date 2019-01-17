@@ -30,6 +30,24 @@ public class SortUtil {
 		return c.compare(x, y) < 0;
 	}
 	
+	/**
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public static boolean greaterThan(Comparable x, Comparable y){
+		return x.compareTo(y)>0;
+	}
+	
+	/**
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public static boolean greaterThan(Comparator c, Comparable x, Comparable y){
+		return  c.compare(x, y) > 0;
+	}
+	
 	public static <T> void printArray(T[] array) {
 		
 		StringBuilder sb = new StringBuilder("[ ");
