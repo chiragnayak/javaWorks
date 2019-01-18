@@ -1,0 +1,23 @@
+
+Binary heap considerations
+Immutability of keys.
+====================
+->Assumption: client does not change keys while they're on the PQ.
+->Best practice: use immutable keys.
+
+Underflow and overflow.
+=======================
+->Underflow: throw exception if deleting from empty PQ.
+->Overflow: add no-arg constructor and use resizing array. (leads to log N amortized time per op (how to make worst case?))
+
+Minimum-oriented priority queue.
+=================================
+->Replace less() with greater().
+->Implement greater().
+
+Other operations.
+=====================
+->Remove an arbitrary item.
+->Change the priority of an item.
+
+can implement with sink() and swim() .. Think !!

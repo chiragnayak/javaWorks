@@ -23,7 +23,7 @@ public class PriorityQ_MaxQ_usingBinaryHeap {
 	
 	public PriorityQ_MaxQ_usingBinaryHeap(int initialCapacity){
 		
-		array = new Comparable [initialCapacity+1]; //as we are not using position 0
+		array = new Comparable [initialCapacity]; //as we are not using position 0
 		N = array.length;
 		nextPosition = 1 ; //skip index 0 to save from complex code in swim and sink functions. 
 	}

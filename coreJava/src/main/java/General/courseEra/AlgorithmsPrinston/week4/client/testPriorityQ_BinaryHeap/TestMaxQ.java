@@ -15,6 +15,13 @@ public class TestMaxQ {
 		}
 		
 		System.out.println("Max Q : "+q.delete_MaxQ());
+		
+		q = new PriorityQ_MaxQ_usingBinaryHeap(10);
+		array = new Integer []{1,2,3,4,5,6,7,8,9};
+		
+		for(Integer element : array){
+			q.add(element);
+		}
 	}
 
 }

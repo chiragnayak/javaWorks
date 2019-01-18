@@ -30,6 +30,10 @@ public class SortUtil {
 		return c.compare(x, y) < 0;
 	}
 	
+	public static boolean equal(Comparable x, Comparable y){
+		return x.compareTo(y)==0;
+	}
+	
 	/**
 	 * @param x
 	 * @param y
@@ -48,7 +52,7 @@ public class SortUtil {
 		return  c.compare(x, y) > 0;
 	}
 	
-	public static <T> void printArray(T[] array) {
+	public static <T> String printArray(T[] array) {
 		
 		StringBuilder sb = new StringBuilder("[ ");
 
@@ -59,6 +63,21 @@ public class SortUtil {
 		sb.append("]");
 
 		System.out.println(sb.toString());
+		
+		return " ";
+	}
+	
+	public static <T> String toString(T[] array) {
+		
+		StringBuilder sb = new StringBuilder("[ ");
+
+		for (int i = 0; i < array.length; i++) {
+			sb.append(array[i] + " ");
+		}
+
+		sb.append("]");
+
+		return sb.toString();
 	}
 
 }
