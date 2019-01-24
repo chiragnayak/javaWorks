@@ -7,8 +7,8 @@ public class HeapSort_InPlace {
 	public static void sort (Comparable [] array){
 		
 			/*
-			 * Although earlier implementations (Prinston implementation as well), in this case
-			 * starts heap from index=1. This will make position "0" not into consideration or else you will have to copy (extra cost)
+			 * Although earlier implementations (Prinston implementation as well), starts heap from index=1. 
+			 * This will make position "0" not into consideration or else you will have to copy (extra cost)
 			 * your array to new heap array whcih start from index 1
 			 * 
 			 * hence, this is bit different implementation where
