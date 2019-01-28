@@ -1,0 +1,50 @@
+
+Hash-function -> takes the key and converts it into array-index.
+
+Issues :
+	- computing the hash function (i.e. an ideal hash function, to uniformly distribute the key index)
+	- equality test : method for checking whether two keys are equal.
+	- collision resolution - algo and data structure to handle two keys that hash to same array index.
+	
+Classic space-time tradeoff.
+	- No space limitation: trivial hash function with key as index.
+	- No time limitation: trivial collision resolution with sequential search.
+	- Space and time limitations: hashing (the real world).
+	
+implementaiton of hash function
+===============================
+
+goal : scramble the keys uniformly to produce a table index so that ---
+		- req #1 : effeciently computable
+		- req #2 : each table (array) index is equally likely for each key.
+		
+ex 1  : say you wantto save phone numbers, which part of daya you will inject ot hash function ?
+		Bad : first three digits
+		Better : last three digits 
+Ex 2 : Aadhar numbers :
+		Bad : first three digits
+		Better : last three digits
+	
+	jest : Need diff approach for dofferent keys. 
+	
+Java Hash code conventions
+===========================
+
+All Java classes inherit a method hashCode(), which returns a 32-bit int.
+
+Requirement. If x.equals(y), then (x.hashCode() == y.hashCode()).
+
+Highly desirable. If !x.equals(y), then (x.hashCode() != y.hashCode()).
+
+	- Default implementation. Memory address of x.
+	- Legal (but poor, fails req #2 above) implementation. Always return 17.
+	- Customized implementations. Integer, Double, String, File, URL, Date, …
+	- User-defined types. Users are on their own.
+	
+	Strings -> Horners method is used to hash string of lenght L
+	
+	- if your object is immutable (like string), hash will return same value everytime you call obj.hashcode().
+	- so for optimization, save the hashcode value as private instance variable and return the same value
+		for obj.hashcode() call. This sill save calculation of hashcode everytime.
+	-
+	
