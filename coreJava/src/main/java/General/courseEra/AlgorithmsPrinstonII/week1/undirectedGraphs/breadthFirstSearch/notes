@@ -1,0 +1,20 @@
+
+ How to ?
+ 
+stratgey -> (Put 'new/starting' element v on queue)
+ 
+ BFS (from source vertex s)
+ 
+Put s onto a FIFO queue, and mark s as visited.
+Repeat until the queue is empty:
+- remove the least recently added vertex v (front of queue)
+- add each of v's unvisited neighbors to the queue (end of queue), and mark them as visited.
+ 	
+ 
+ Properties:
+ ===========
+ 
+ - puts unvitied elements (vertices) to queue and processes it 
+ - path we get from BFS is the one which uses fewest number of edges (shortest path)
+ 
+ - BFS examins vertices in the graph in increasing distance from source

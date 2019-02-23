@@ -46,5 +46,55 @@ Highly desirable. If !x.equals(y), then (x.hashCode() != y.hashCode()).
 	- if your object is immutable (like string), hash will return same value everytime you call obj.hashcode().
 	- so for optimization, save the hashcode value as private instance variable and return the same value
 		for obj.hashcode() call. This sill save calculation of hashcode everytime.
-	-
+
+Hash Code design
+================
+
+"Standard" recipe for user-defined types.
+     - Combine each significant field using the 31x + y rule.
+     - If field is a primitive type, use wrapper type hashCode().
+     - If field is null, return 0.
+     - If field is a reference type, use hashCode(). (you can apply it recursively for its fields as well, consider performance)
+     - If field is an array, apply to each entry.
+     
+     like :
+     
+     for a class :
+     public final class Transaction implements Comparable<Transaction>
+	{
+			private final String who;
+			private final Date when;
+			private final double amount;
+		
+		public int hashCode()
+		{
+			int hash = 17;
+			hash = 31*hash + who.hashCode();
+			hash = 31*hash + when.hashCode();
+			hash = 31*hash + ((Double) amount).hashCode();
+			return hash;
+		}
+		
+		.....
+	}//class ends
 	
+	Modular Hashing
+	================
+	
+	Uniform hashing assumption. 
+	==========================
+	
+	Each key is equally likely to hash to an integer between 0 and M - 1.
+	
+	
+	
+	Seperate Chaining vs Linear probing:
+	====================================
+	Separate chaining.
+	    - Easier to implement delete.
+	    - Performance degrades gracefully.
+	    - Clustering less sensitive to poorly-designed hash function.
+	Linear probing.
+	    - Less wasted space.
+	    - Better cache performance.
+		

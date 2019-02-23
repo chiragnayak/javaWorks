@@ -70,4 +70,8 @@ public class Stack_usingLinkedList {
 		System.out.println(obj.toString());
 	}
 
+	public boolean isEmpty() {
+		
+		return firstNode==null;
+	}
 }
