@@ -2,8 +2,6 @@ package General.swing.miniProjects.calculator.model;
 
 public class MyCalculatorModel {
 	
-	double answer;
-	
 	public double operate(double num1, double num2, EnumCalculatorOp operator){
 		
 		switch (operator) {
