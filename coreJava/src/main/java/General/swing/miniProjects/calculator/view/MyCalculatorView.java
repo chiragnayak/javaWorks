@@ -45,7 +45,7 @@ public class MyCalculatorView extends JFrame {
 		
 		historyLabel.setBounds(tempX,y-30,240,HEIGHT);  
 		historyLabel.setBackground(Color.CYAN);  
-		historyLabel.setForeground(Color.ORANGE);  
+		historyLabel.setForeground(Color.RED);  
 		add(historyLabel); 
 
 		int tempY = TOPY + 4*V_SPACE;
@@ -72,7 +72,7 @@ public class MyCalculatorView extends JFrame {
 		
 		}
 		
-		clear.setText("C");
+		clear.setText("Clear");
 		clear.setBounds(tempX, tempY, WIDTH, HEIGHT);
 		this.add(clear);
 		clear.addActionListener(new ActionListener() {
