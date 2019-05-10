@@ -5,6 +5,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 public class FutureDemo {
 
@@ -78,6 +79,23 @@ public class FutureDemo {
 		 * calling its run method.)
 		 * 
 		 */
+		
+		FutureTask<String> futureTask01 = new FutureTask<String>(new Callable<String>() {
+
+			@Override
+			public String call() throws Exception {
+
+				for(int x = 0; x <= 10; x++) {
+					Thread.sleep(1000);
+					System.out.print(".");
+				}
+				return "Future Result returned from callable!";
+			}
+		});
+	
+		futureTask01.run();
+		
+		System.out.println(futureTask01.get()); //Waits if necessary for the computation to complete, and thenretrieves its result.
 	}
 
 }

@@ -46,7 +46,7 @@ public class MergeSort {
 		int j = mid+1;
 		for(int x=low; x<=high; x++){
 			
-			if(i>mid){
+			if(i>mid){ //if 
 				array[x] = auxArray[j++];
 			}else if(j > high){
 				array[x] = auxArray[i++];

@@ -9,7 +9,7 @@ be executed.
 Worker threads have a simple life: request the next task from the
 work queue, execute it, and go back to waiting for another task.
 
-You can create a thread pool by calling one of the static factory methods in Executors:
+You can create a thread pool by calling one of the static factory methods in "Executors":
 
 newFixedThreadPool.
 -------------------

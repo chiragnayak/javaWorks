@@ -46,8 +46,8 @@ public class ExecutorDemo {
 
 		executorObj.execute(() -> System.out.println("Using lamdas"));
 
-		System.out.println("Shutdown " + executorObj.isShutdown());
-		System.out.println("Terminated " + executorObj.isTerminated());
+		System.out.println("Shutdown " + executorObj.isShutdown()); //returns trun if executor is "shutdown"
+		System.out.println("Terminated " + executorObj.isTerminated()); // returns true if executor is terminated
 
 		if (executorObj != null) {
 
