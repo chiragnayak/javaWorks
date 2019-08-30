@@ -24,7 +24,8 @@ public class TestBounds {
 		 * 
 		 * i.e : any class Y that extends X can be on RHS
 		 * 
-		 * X should be Parent of Y X can be equal to X
+		 * X should be Parent of Y 
+		 * X can be equal to X
 		 * 
 		 * Points to note : the list becomes virtually immutable.
 		 * 
@@ -64,7 +65,8 @@ public class TestBounds {
 		 * 
 		 * List <? super X> obj = ArrayList <Y>();
 		 * 
-		 * Y should be Parent of X Y can be equal to X
+		 * Y should be Parent of X 
+		 * Y can be equal to X
 		 * 
 		 * EX : List<? super String> obj)
 		 * 
