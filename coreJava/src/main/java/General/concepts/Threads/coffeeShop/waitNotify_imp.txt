@@ -13,6 +13,7 @@ What wait() does ?
 What notify()/notifyAll() does ?
 -> When some other thread calls notify or notifyAll on that same object the first thread changes state from WAITING to BLOCKED, Notified thread does NOT automatically reacquire the lock or become RUNNABLE, in fact it must fight for the lock with all other blocked threads.
 
+Summary : A thread that calls wait() on any object becomes inactive until another thread calls notify() on that object. In order to call either wait() or notify the calling thread must first obtain the lock on that object. 
 
 WAITING and BLOCKED states both prevent thread from running, but they are very different.
 
