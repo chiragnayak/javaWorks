@@ -2,7 +2,7 @@ package General.concepts.Threads.printNumbersByNThreads;
 
 /**
  * 
- * This thread program initial number (to start with) and number of players 
+ * This thread program takes initial number (to start with) and number of players 
  * in that will take part in printing the numbers one by one.
  * 
  * @author cnayak
