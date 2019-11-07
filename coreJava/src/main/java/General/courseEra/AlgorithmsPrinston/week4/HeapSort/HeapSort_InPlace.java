@@ -43,22 +43,26 @@ public class HeapSort_InPlace {
 	
 	/*
 	 * usual implementation
+	 * 
+	 * if key at "K" is greater than its parent at "K/2", exchange their positions
+	 * repeat for key's new position (i.e. K/2),
+	 * 
 	 * */
-	private static void swim(Comparable [] array, int index, int N){
+	private static void swim(Comparable [] array, int keyPosition, int N){
 		
-		int parent = index/2;
-		while(parent >=0) {
+		int parentPosition = keyPosition/2;
+		while(parentPosition >=0) {
 			
-			if(SortUtil.lessThan(array[parent], array[index])){
-				SortUtil.swap(array, parent, index);
-				index = parent;
-				parent = index/2;
+			if(SortUtil.lessThan(array[parentPosition], array[keyPosition])){
+				SortUtil.swap(array, parentPosition, keyPosition);
+				keyPosition = parentPosition;
+				parentPosition = keyPosition/2;
 			}
 		}
 		
 	}
 	
-	private static void sink(Comparable [] a, int index, int N){
+	private static void sink(Comparable [] a, int keyPosition, int N){
 
 		System.out.print(" -> SINK - N : "+N+" --> ");
 		
@@ -68,17 +72,17 @@ public class HeapSort_InPlace {
 			return;
 		}
 		
-		while(2*index <= N){
+		while(2*keyPosition <= N){
 			
-			int j = 2*index;
+			int j = 2*keyPosition;
 			
 			if( (j < N) && SortUtil.lessThan(a[j], a[j+1])) j++;
 			
-			if(SortUtil.lessThan(a[j], a[index])) break;
+			if(SortUtil.lessThan(a[j], a[keyPosition])) break;
 			
-			SortUtil.swap(a, j, index);
+			SortUtil.swap(a, j, keyPosition);
 			
-			index = j;
+			keyPosition = j;
 			
 			if(j==0) {
 				break; // indicating that we are at root only and not moved further or "sinked", so do not proceed, else infinite loop. Test hangs.
