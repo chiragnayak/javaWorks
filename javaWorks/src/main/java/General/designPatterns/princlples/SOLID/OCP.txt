@@ -1,0 +1,37 @@
+
+Open Close principle
+======================
+
+intent : to keep the stable parts of your system separate from varying parts
+	-> closing classes for changes
+	-> open to extension by using 
+		+ inheritance
+		+ interfaces
+
+you can consider class being "closed" to editing once it has been :
+
+	-> Tested to be functioning properly 
+	-> all attributes and behaviors are encapsulated
+	-> Proven to be stable within your system
+	
+you can extend your class by :
+	-> inheritance, extend your concrete class to sub-class to add extra features in sub class.
+	-> creating a abstract class
+	-> interface
+	
+=========================================================================
+
+Software entities like classes, modules and functions should be open for extension but closed for modifications.
+
+The Open Close Principle states that the design and writing of the code should be done in a way that new functionality 
+should be added with minimum changes in the existing code. 
+
+The design should be done in a way to allow the adding of new functionality as new classes, keeping as much as possible 
+existing code unchanged.
+
+How to ?
+
+Can be ensured by use of Abstract Classes and concrete classes for implementing their behavior. 
+This will enforce having Concrete Classes extending Abstract Classes instead of changing them.
+
+Ex : Template pattern, Strategy Pattern, Decorator pattern, Factory Pattern

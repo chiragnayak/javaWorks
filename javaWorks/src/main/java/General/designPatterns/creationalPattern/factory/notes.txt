@@ -1,0 +1,12 @@
+
+Factory(Simplified version of Factory Method) 
+
+- Creates objects without exposing the instantiation logic to the client 
+- Refers to the newly created object through a common interface.
+
+
+
+         Client 
+         	--> Client : Asks for concrete object from factory 
+         	--> factory : createObjects() and returns
+         	--> client : access the object using the interface/abstract class reference.

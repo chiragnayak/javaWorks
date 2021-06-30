@@ -1,0 +1,152 @@
++-+-+-+-+-+-+-+-+-+-+-+-+-
+For Server view in eclipse
++-+-+-+-+-+-+-+-+-+-+-+-+-
+http://download.eclipse.org/releases/neon/
+Web,XML,Java EE and OSGi Enterprise Development
+
++-+-+-+-+-+-+-+-+-+-
+Inversion of control
++-+-+-+-+-+-+-+-+-+-
+
+	- Object creation is outsourced to object factory (some outside mechanism) and the logic is not written in  calling class.
+	- Formal def : The approach of outsourcing the cnstruction and management of the object. 
+
+Question
+=========
+
+Why do we specify the Coach interface in getBean()?  For example: Coach theCoach = context.getBean("myCoach", Coach.class); 
+
+Answer
+=======
+
+When we pass the interface to the method, behind the scenes Spring will cast the object for you.
+
+context.getBean("myCoach", Coach.class), 
+
+However, there are some slight differences than normal casting.
+
+From the Spring docs: Behaves the same as getBean(String), but provides a measure of type safety by throwing a BeanNotOfRequiredTypeException,
+ if the bean is not of the required type. This means that ClassCastException can't be thrown on casting the result correctly, as can happen with getBean(String).
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-	
+String Container (Application context)
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+Primary functions;
+	- Create and manage objects (Inversion of Control)
+	- Inject object's dependencies (Dependency of Injection)
+	
+Three way to create spring container:
+	- XML configuration file (legacy) (by adding bean definitions in XML) 
+		-> uses ClassPathXmlApplicationContext
+	- JAVA annotations (by adding context:component-scan in XML, and then marking @Component etc.)
+		-> uses ClassPathXmlApplicationContext 
+	- Java source code.
+		+ No XML required
+		-> Create a java Class and annotate it as @Configuration
+		-> Add component scanning support using @ComponentScan("package")
+		-> Read Spring Java configuration class (AnnotationConfigApplicationContext)
+		-> Read bean from Spring Container
+
+Process of steps (spring developement process) :
+	(1) Configure your Spring beans
+	(2) Create a Spring container
+	(3) Retrieve beans from Spring container
+	
++-+-+-+-+-+-+-
+Bean Life-cycle
++-+-+-+-+-+-+-+-
+
+container started -> 
+Bean Instantiated -> 
+Dependencies Injected -> 
+Internal Spring processing -> 
+Your custom init method also called hook(if defined) ->
+
+---- BEAN IS READY FOR USE ----
+
+-> container shutdown (like application is closed or context.close is called)
+-> your custom destroy method 
+-> STOP
+
++-+-+-+-+-+-
+BEAN SCOPES
++-+-+-+-+-+-
+
+1. singleton : create a single shared instance of the bean default scope.
+2. prototype : creates a new bean instance for each container request.
+				> Spring does not call the destroy method for this scope.
+				> i.e. it does not manage the complete lifecycle of a prototype bean
+				> in other words: configured destruction lifecycle callbacks are not called automatically
+				> Client code need to take care of releasing the resources holded-up by protype  bean.
+3. request   : scope to an HTTP web resuest. Only used for web apps.
+4. session 	 : scoped to an HTTP web session. Only used for web aps.
+5. global-session: scoped to a global HTTP web session. Only used for web apps. 
+
++-+-+-+-+-+-+-+-+-+-
+AUTO WIRING
++-+-+-+-+-+-+-+-+-+-
+
+Spring will look for a class that matches the property
+	> matches by type : class or interface
+Spring will inject it automatically (i.e. auto wired)
+
+NOTE : The definition bean that is being autowired must be 
+
+ From Java Docs: 
+ 
+ * Marks a constructor, field, setter method or config method as to be autowired
+ * by Spring's dependency injection facilities.
+ *
+ * Only one constructor (at max) of any given bean class may carry this annotation,
+ * indicating the constructor to autowire when used as a Spring bean. Such a
+ * constructor does not have to be public.
+ *
+ * Fields are injected right after construction of a bean, before any config
+ * methods are invoked. Such a config field does not have to be public.
+
+   + Types
+   	 - Constructor injection
+   	    Ex : 
+   	    
+   	 - setter injection
+   	 - field injection
+   	
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+ANNOTATIONS
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+
+-> @Configuration 
+				- is meta-annotated with @Component, therefore @Configuration classes are candidates for component scanning.
+
+-> @Component
+-> @Prototype
+
+-> @PostConstruct : code will execute after constructor & after injection of dependencies.
+-> @PreDestroy : code will execute before the bean is destroyed. Not executed for 'prototype' scoped beans
+				
+				In contrast to the other scopes, Spring does not manage the complete lifecycle of a prototype bean: 
+				the container instantiates, configures, and otherwise assembles a prototype object, and hands it to the client, 
+				with no further record of that prototype instance. 
+				Thus, although initialization lifecycle callback methods are called on all objects regardless of scope, 
+				in the case of prototypes, configured destruction lifecycle callbacks are not called. 
+				The client code must clean up prototype-scoped objects and release expensive resources that the prototype bean(s) 
+				are holding. To get the Spring container to release resources held by prototype-scoped beans, 
+				try using a custom bean post-processor, which holds a reference to beans that need to be cleaned up.
+
+  **** Special Note about @PostConstruct and @PreDestroy Method Signatures ********
+
+
+	    --> Access modifier
+			The method can have any access modifier (public, protected, private)
+			
+		--> Return type
+			The method can have any return type. However, "void' is most commonly used. 
+			If you give a return type just note that you will not be able to capture the return value. 
+			As a result, "void" is commonly used.
+			
+		--> Method name
+			The method can have any method name.
+			
+		--> Arguments
+			The method can not accept any arguments. The method should be no-arg.
+	

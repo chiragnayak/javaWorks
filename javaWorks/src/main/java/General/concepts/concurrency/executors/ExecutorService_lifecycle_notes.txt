@@ -1,0 +1,81 @@
+
+The lifecycle implied by ExecutorService has three states
+
+	-> running, 
+	-> shutting down
+	-> terminated.
+	
+	ExecutorServices are initially created in the running state.
+	
+	The shutdown method initiates a graceful shutdown: no new tasks are accepted but previously submitted tasks are allowed to complete—including those that
+	have not yet begun execution. 
+	
+	The shutdownNow method initiates an abrupt shutdown: it attempts to cancel outstanding tasks and does not start any tasks that are queued but not begun.
+	
+	The lifecycle of a task executed by an Executor has four phases: 
+	
+		-> created, 
+		-> submitted,
+		-> started, 
+		-> completed.
+
+===========================
+ExecutorService methods:
+============================
+
+void execute(Runnable command)
+	-> Executes a Runnable task at some point in the future
+
+Future<?> submit(Runnable task)
+	->  Executes a Runnable task at some point in the future and returns
+ 
+ <T> Future<T> submit(Callable<T> task)
+	-> Executes a Callable task at some point in the future and returns a Future representing the pending results of the task
+
+<T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks) throws InterruptedException
+	-> Executes the given tasks, synchronously returning the results of all tasks as a Collection of Future objects, in
+		the same order they were in the original collection
+		
+<T> T invokeAny(Collection<? extends Callable<T>> tasks) throws InterruptedException, ExecutionException
+	-> Executes the given tasks, synchronously returning the result of one of finished tasks, cancelling any unfinished tasks
+	
+void shutdown();
+	
+	Initiates an orderly shutdown in which previously submitted tasks are executed, but no new tasks will be accepted. Invocation has no additional effect if already shut down. 
+	This method does not wait for previously submitted tasks to complete execution. Use awaitTermination to do that.
+	
+ List<Runnable> shutdownNow();
+ 
+	 Attempts to stop all actively executing tasks, halts the processing of waiting tasks, and returns a list of the tasks that were awaiting execution. 
+	 This method does not wait for actively executing tasks to terminate. Use awaitTermination to do that. 
+	 There are no guarantees beyond best-effort attempts to stop processing actively executing tasks
+	 
+boolean isShutdown();
+    
+    Returns {@code true} if this executor has been shut down.
+  
+boolean isTerminated();
+ 
+ Returns true if all tasks have completed following shut down. Note that isTerminated is never true unless either shutdown or shutdownNow was called first.
+	
+
+===============
+Future methods
+==============
+
+boolean isDone()
+	-> Returns true if the task was completed, threw an exception, or was cancelled.
+	
+boolean isCancelled() 
+	-> Returns true if the task was cancelled before it completely normally.
+	
+boolean cancel()
+	->  Attempts to cancel execution of the task.
+	
+V get() 
+	-> Retrieves the result of a task, waiting endlessly if it is not yet available. (i.e. it is blocking)
+	
+V get(long timeout,TimeUnit unit)
+	-> Retrieves the result of a task, waiting the specified amount of time. If the result is not ready by the time the timeout is
+reached, a checked TimeoutException will be thrown.
+

@@ -1,0 +1,9 @@
+
+Inside stringPool ...
+s1 == s2: true
+s1 == s3: true
+s1 == s4: false
+s1 == s4.intern(): true
+s1 == "hel" + "lo!": true
+s1 == "hel" + s5: false
+s1 == ("hel" + s5).intern(): true

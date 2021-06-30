@@ -1,0 +1,26 @@
+How to ?
+
+To visit a vertex v :
+		-- Mark vertex v as visited.
+		-- Recursively visit all unmarked vertices adjacent to v.
+
+(puts un-visited element on to stack and process it)
+
+Properties
+==========
+
+DFS marks all vertices connected to s in time proportional to the sum of their degrees.
+
+
+--- If w marked, then w connected to s
+
+Explanation : If you have marked vertex w (i.e. marked[w] is set to true), it means that vertex-w is connected to vertex-s (by recursive calls), using some path.
+
+--- anaother inference, if w connected to s, then w marked. 
+
+--- On contrary, if vertex-w unmarked, then there will be an edge from vertex-s towards vertex-w, that is not connected (un-marked)
+
+
+Each vertex connected to s is visited once.
+
+After DFS, one can find vertices connected to s in constant time and can find a path to s (if one exists) in time proportional to its length.

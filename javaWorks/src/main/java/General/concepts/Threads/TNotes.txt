@@ -1,0 +1,142 @@
+
+You need to override the run() method when you want to extend the Thread class. 
+If you don’t override the run() method, the default run() method from the Thread class will be called, which does nothing.
+
+
+you do not invoke the run() method directly. Instead you start
+the thread using the start() method; the run() method is invoked automatically by the JVM.
+
+For printing the name of the thread, you can use the instance method getName(), which returns a String.
+
+Runnable does not declare the start() method. So, use Thread (Runnable target)
+
+When you call the start() method, the thread gets scheduled and the run() method is invoked by the JVM when it is time to execute that thread.
+
+If the current thread invokes join() on an instance of another thread, then the current thread waits indefinitely for that other thread to die.
+
+Threads run asynchronously. 
+Threads do not run sequentially (like function calls), so the order of execution of threads is not predictable. 
+Thread behavior (sequence of execution or order of execution) is non-deterministic in nature
+
+States of Thread
+==============
+
+NEW -> Just after the creation of the thread and just before calling the start() method on that thread, the thread is in the
+new state.
+
+RUNNALBLE -> After calling the start() method, the thread is ready to run or is in the running state (which you cannot
+determine), so it is in runnable state.
+
+	(@ OS LEVEL)
+	+ READY -> thread is in the ready state when it is waiting for the OS to run it in the processor. 
+	+ RUNNING -> When the OS actually runs it in the processor, it is in the running state
+
+TERMINATED -> 
+
+Concurrent access problems
+===========================
+
+When two or more threads are trying to access a variable and one of them wants to modify it, you get a problem
+known as a data race. (race condition or race hazard)
+
+Thread Synchronization
+=====================
+
+	Synchronized block -> In synchronized blocks, you use the synchronized keyword for a reference variable and follow it by a block of code.
+						  A thread has to acquire a lock on the synchronized variable to enter the block; 
+						  when the execution of the block completes, the thread releases the lock. 
+							
+						 With synchronized blocks, you can acquire a lock on a reference variable only. 
+						 If you use a primitive type, you will get a compiler error.
+						 
+						 What if an exception gets thrown inside the synchronized block? Will the lock get released? 
+						 Yes, no matter whether the block is executed fully or an exception is thrown, the lock will be automatically released by the JVM.
+						 
+						 public void increment() {
+						// These two statements perform read and write operations
+						// on a variable that is commonly accessed by multiple threads.
+						// So, acquire a lock before processing this "critical section"
+						synchronized(this) {
+								Counter.count++;
+								System.out.print(Counter.count + " ");
+							}
+						}
+	
+	Synchronized Methods ->  An entire method can be declared synchronized. 
+	
+							In that case, when the method declared as synchronized is called, a lock is obtained on the object on which the method is called, 
+							and it is released when the method returns to the caller.
+					
+							public synchronized void assign(int i) {
+								val = i;
+							}
+							
+							
+	You cannot declare constructors synchronized; it will result in a compiler error.
+	you can use synchronized blocks inside constructors.
+	
+	If you want to acquire a lock on an object for only a small block of code and not the whole method, then
+	synchronized blocks are sufficient.
+	
+	In synchronized blocks, you can explicitly provide the reference object on which you want to acquire a lock.
+	
+	However, in the case of a synchronized method, you do not provide any explicit reference to acquire a lock on.
+	
+	V IMP -> A synchronized method acquires an implicit lock on the this reference (for instance methods) and class object
+	(for static methods).
+	
+	On the other hand, if you want to acquire a lock on the entire body of a small method, then using synchronized as a
+	method attribute is more elegant and convenient than synchronized blocks
+	
+	DeadLock
+	=========
+	
+	Deadlocks can arise in the context of multiple locks.
+	
+	If multiple locks are acquired in the same order, then a deadlock will not occur; however, if
+	you acquire them in a different order, then deadlocks may occur.
+
+	Deadlocks (just like other multi-threading problems) are non-deterministic; you cannot
+	consistently reproduce deadlocks.
+	
+	LiveLock
+	========
+	
+	Consider two threads t1 and t2. Assume that thread t1 makes a change and thread t2 undoes that change. When
+	both the threads t1 and t2 work, it will appear as though lots of work is getting done, but no progress is made. This
+	situation is called a livelock in threads.
+	
+	
+	Lock Starvation
+	===============
+	
+	 If there are many high-priority threads that want to obtain the lock and also hold the lock for long time periods,
+	 when will the low-priority threads get a chance to obtain the lock? 
+	 
+	 In other words, in a situation where low-priority threads “starve” for a long time trying to obtain the lock is known 
+	 as lock starvation
+	 
+	 
+	 Wait and notify 
+	 ==============
+	 
+	 The method wait() allows the calling thread to wait for the wait object (on which wait() is called). In other
+	words, if you want to make a thread wait for another thread, you can ask it to wait for the wait object using the wait()
+	method. A thread remains in the wait state until some another thread calls the notify() or notifyAll() method
+	on the wait object
+	
+	Sub-note : It tells the calling thread to give up the lock and go to sleep until some other thread enters the same monitor 
+	and calls notify()
+	
+	The wait(int) method (with or without timeout value) should be called only after acquiring a lock.
+	A wait() call adds the thread to the waiting queue of the acquired lock. If you don’t do above, there is no proper transition from the
+	running state to timed_waiting (or waiting state, if a timeout value is not given) to happen. So, the program crashes by 
+	throwing an IllegalMonitorStateException exception.
+	
+	So, very Imp : Call  wait /notifyAll and notify only after acquiring the relevant lock.
+	
+	
+	
+
+
+

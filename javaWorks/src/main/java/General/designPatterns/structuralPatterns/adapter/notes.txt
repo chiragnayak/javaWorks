@@ -1,0 +1,27 @@
+
+-> Allows two incompatible interfaces to work together.
+
+-> Used when client expects "Target" interface. But we have Adaptee (available) to our disposal.
+
+-> Adapter class allows the use of the "Available" interface and the "Target" interface 
+
+	/*
+	 * 
+	 * 
+	 *   THREE PIN PLUG >>>  ADAPTER >> TWO PIN SOCKET
+	 *    
+	 *     (ADAPTEE)                    (TARGET)       CLIENT SIDE 
+	 * 
+	 * The client sees only the target interface and not the adapter. 
+	 * The adapter implements the target interface. 
+	 * Adapter delegates all requests to Adaptee.
+	 * 
+	 * 
+	 * */
+	 
+	 Object Adapter Vs Class Adapter
+	 ===============================
+	
+	The adapter pattern in which the adapter holds an instance of adaptee is Object Adapter Pattern. Hence based on object composition.
+	
+	There is also another type called Class Adapter Pattern which use inheritance instead of composition but you require multiple inheritance to implement it.

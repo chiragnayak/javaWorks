@@ -1,0 +1,31 @@
+
+to fetch binary
+===============
+loop --
+ 	val = num%2 -> will give 1 or 0.
+ 	num /= 2 -> next iteration input.
+ 
+ 
+ 
+ you will have to reverse it before printing.
+ 
+ 
+ fetch individual digits:
+ =======================
+ loop --
+ 	val = num % 10 -> gives last digit.
+ 	num = num / 10 -> truncates last digit
+ 	
+ If processing string or content of string []
+ ============================================= 
+ 
+ check : 
+ 	it is not null
+ 	it is not empty
+ 	
+ 
+ Golden rule (to cover use cases) :
+ Put conditions, using which the answer can be directly deduced or further processing can be averted.
+ 	like > if the divisor is 1, answer will be dividend, directly return it
+ 		 > if the range is out-of-bounds (specifically for in cases), process it before doing any calculations on it
+ 	     > if string is empty > return directly without any further processing

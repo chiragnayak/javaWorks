@@ -1,0 +1,30 @@
+
+Semaphores
+===========
+
+A semaphore controls access to shared resources. 
+
+A semaphore maintains a counter to specify the number of resources that the semaphore controls. 
+
+ >> Access to the resource is allowed if the counter is greater than zero,
+ 
+ >> while a zero value of the counter indicates that no resource is available at the moment and so the access is denied.
+ 
+ >> The methods acquire() and release() are for acquiring and releasing resources from a semaphore. 
+ 
+ #1 -> If a thread calls acquire() and the counter is zero (i.e., resources are unavailable), 
+ thread waits until the counter is non-zero and then gets the resource for use. 
+ 
+ Once the thread is done using the resource, it calls release() to increment the resource availability counter.
+ 
+ #2 Note if the number of resources is 1, then at a given time only one thread can access the resource; in this case,
+using the semaphore is similar to using a lock.
+
+synchronizers provided in the java.util.concurrent library and their uses are listed here:
+
+• Semaphore controls access to one or more shared resources.
+• Phaser is used to support a synchronization barrier.
+• CountDownLatch allows threads to wait for a countdown to complete.
+• Exchanger supports exchanging data between two threads.
+• CyclicBarrier enables threads to wait at a predefined execution point.
+
