@@ -1,11 +1,11 @@
 package General.designPatterns.creationalPattern.factoryMethod.factories;
 
-import General.designPatterns.creationalPattern.factoryMethod.concreteClasses.IFacility;
+import General.designPatterns.creationalPattern.factoryMethod.concreteClasses.IEntity;
 
 public interface IFacilityfactory {
 	
-	public IFacility getFacility();
-	public <T extends IFacility> T getFacility(Class facility);
+	public IEntity getFacility();
+	public <T extends IEntity> T getFacility(Class facility);
 	
 	public abstract void setBaseCharges(double baseCharge);
 	public abstract double getBaseCharges();

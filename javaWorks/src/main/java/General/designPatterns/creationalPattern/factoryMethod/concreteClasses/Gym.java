@@ -1,9 +1,9 @@
 package General.designPatterns.creationalPattern.factoryMethod.concreteClasses;
 
-public class GymFacility implements IFacility {
+public class Gym implements IEntity {
 	
-	public GymFacility() {
-		System.out.println("Constructor call -> GYM Facility");
+	public Gym() {
+		System.out.println("Constructor call -> GYM");
 	}
 
 	@Override

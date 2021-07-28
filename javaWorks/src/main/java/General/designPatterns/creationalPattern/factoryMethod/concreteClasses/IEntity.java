@@ -1,6 +1,6 @@
 package General.designPatterns.creationalPattern.factoryMethod.concreteClasses;
 
-public interface IFacility {
+public interface IEntity {
 	
 	public void useMe();
 

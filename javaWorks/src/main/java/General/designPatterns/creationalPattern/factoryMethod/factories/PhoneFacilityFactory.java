@@ -1,7 +1,7 @@
 package General.designPatterns.creationalPattern.factoryMethod.factories;
 
-import General.designPatterns.creationalPattern.factoryMethod.concreteClasses.IFacility;
-import General.designPatterns.creationalPattern.factoryMethod.concreteClasses.PhoneFacility;
+import General.designPatterns.creationalPattern.factoryMethod.concreteClasses.IEntity;
+import General.designPatterns.creationalPattern.factoryMethod.concreteClasses.Phone;
 
 public class PhoneFacilityFactory extends FacilityFactory {
 	
@@ -9,8 +9,8 @@ public class PhoneFacilityFactory extends FacilityFactory {
 	double baseCharge = 10;
 
 	@Override
-	public IFacility getFacility() {
-		return new PhoneFacility();
+	public IEntity getFacility() {
+		return new Phone();
 	}
 
 	@Override
@@ -37,9 +37,9 @@ public class PhoneFacilityFactory extends FacilityFactory {
 	}
 
 	@Override
-	public IFacility getFacility(Class class_) {
-		if(class_.isAssignableFrom(PhoneFacility.class)) {
-			return new PhoneFacility();
+	public IEntity getFacility(Class class_) {
+		if(class_.isAssignableFrom(Phone.class)) {
+			return new Phone();
 		}else {
 			return null;
 		}

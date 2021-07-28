@@ -1,8 +1,8 @@
 package General.designPatterns.creationalPattern.factoryMethod.concreteClasses;
 
-public class PhoneFacility implements IFacility {
+public class Phone implements IEntity {
 	
-	public PhoneFacility() {
+	public Phone() {
 		System.out.println("Constructor call -> Phone Facility");
 	}
 

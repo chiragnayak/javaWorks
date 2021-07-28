@@ -1,8 +1,8 @@
 package General.designPatterns.creationalPattern.factoryMethod.factories;
 
-import General.designPatterns.creationalPattern.factoryMethod.concreteClasses.GymFacility;
-import General.designPatterns.creationalPattern.factoryMethod.concreteClasses.GymWithSpaFacility;
-import General.designPatterns.creationalPattern.factoryMethod.concreteClasses.IFacility;
+import General.designPatterns.creationalPattern.factoryMethod.concreteClasses.Gym;
+import General.designPatterns.creationalPattern.factoryMethod.concreteClasses.Spa;
+import General.designPatterns.creationalPattern.factoryMethod.concreteClasses.IEntity;
 
 public class GymFacilityFactory extends  FacilityFactory {
 	
@@ -10,8 +10,8 @@ public class GymFacilityFactory extends  FacilityFactory {
 	double baseCharge = 1000;
 
 	@Override
-	public IFacility getFacility() {
-		return new GymFacility();
+	public IEntity getFacility() {
+		return new Gym();
 	}
 
 	@Override
@@ -38,14 +38,14 @@ public class GymFacilityFactory extends  FacilityFactory {
 	}
 
 	@Override
-	public IFacility getFacility(Class class_) {
+	public IEntity getFacility(Class class_) {
 		
-		if(class_.isAssignableFrom(GymFacility.class)) {
+		if(class_.isAssignableFrom(Gym.class)) {
 			setBaseCharges(1000);
-			return new GymFacility();
-		}else if(class_.isAssignableFrom(GymWithSpaFacility.class)) {
+			return new Gym();
+		}else if(class_.isAssignableFrom(Spa.class)) {
 			setBaseCharges(2000);
-			return new GymWithSpaFacility();
+			return new Spa();
 		}else {
 			return null;
 		}
